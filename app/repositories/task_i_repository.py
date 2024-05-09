@@ -1,25 +1,25 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
-from app.schemas.task_schema import TaskShow
+from app.models.task_model import Task
 
-class TaskIRepository(ABC):
+class ITaskRepository(ABC):
 
-    @classmethod
-    async def get_all_tasks(self, page: int, offset: int):
-        pass
+    @abstractmethod
+    async def get_all_tasks(self, page: int, offset: int) -> list[Task]:
+        raise NotImplementedError
 
-    @classmethod
-    async def get_task_by_id(self, task_id: int):
-        pass
+    @abstractmethod
+    async def get_task_by_id(self, task_id: int) -> Task:
+        raise NotImplementedError
 
-    @classmethod
-    async def create_task(self, task: TaskShow):
-        pass
+    @abstractmethod
+    async def create_task(self, task: Task) -> Task:
+        raise NotImplementedError
 
-    @classmethod
-    async def update_task(self, task_id: int):
-        pass
+    @abstractmethod
+    async def update_task(self, task_id: int) -> None:
+        raise NotImplementedError
 
-    @classmethod
-    async def delete_task(self, task_id: int):
-        pass
+    @abstractmethod
+    async def delete_task(self, task_id: int) -> None:
+        raise NotImplementedError

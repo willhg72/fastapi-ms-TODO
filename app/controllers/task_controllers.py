@@ -1,10 +1,13 @@
 from datetime import datetime
 from typing import Any, List
 from uuid import uuid4
+from app.controllers.utils import get_task_service
 from app.utilities.utility_data_task import Fake_Data_Task
 
 data= Fake_Data_Task("fake_data_task.json")
 
+
+repository = get_task_service()
 
 class ControllerTask:
 

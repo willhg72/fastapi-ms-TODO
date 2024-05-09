@@ -1,5 +1,4 @@
-from fastapi import APIRouter
-
+from fastapi import APIRouter, status
 from app.controllers.task_controllers import ControllerTask
 from app.schemas.task_schema import TaskShow
 
@@ -12,7 +11,9 @@ async def get_all_tasks(page: int = 1, offset: int = 10):
     return ret
 
 
-@router.post("/")
+@router.post(
+    "/", status_code=status.HTTP_201_CREATED, response_model=TaskShow
+)
 async def new_task(task: TaskShow):
     pass
 
