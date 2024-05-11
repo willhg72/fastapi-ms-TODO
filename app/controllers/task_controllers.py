@@ -6,8 +6,6 @@ from app.utilities.utility_data_task import Fake_Data_Task
 
 
 class ControllerTask:
-    def __init__(self):
-        super().__init__()
 
     def get_all_tasks(self, limit: int, offset: int):
         tasks = get_task_service()

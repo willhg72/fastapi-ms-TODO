@@ -5,7 +5,6 @@ from app.models.task_model import Task
 
 class TaskPostgreSQLRepository(ITaskRepository):
     def __init__(self, db: Session):
-        super().__init__()
         self.db = db
 
     def get_all_tasks(self, limit: int, offset: int) -> list[Task]:

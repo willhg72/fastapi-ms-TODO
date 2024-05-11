@@ -20,21 +20,21 @@ async def get_all_tasks(
     return ret
 
 
-# @router.post("/", status_code=status.HTTP_201_CREATED, response_model=TaskShow)
-# async def new_task(task: TaskShow):
-#     pass
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=TaskShow)
+async def new_task(task: TaskShow):
+    pass
 
 
-# @router.get("/{task_id}")
-# async def get_task(task_id: int):
-#     pass
+@router.get("/{task_id}")
+async def get_task(task_id: int):
+    pass
 
 
-# @router.patch("/{task_id}")
-# async def update_task(task: TaskShow):
-#     pass
+@router.patch("/{task_id}")
+async def update_task(task: TaskShow):
+    pass
 
 
-# @router.delete("/{task_id}")
-# async def delete_task(task_id: int):
-#     pass
+@router.delete("/{task_id}")
+async def delete_task(task_id: int):
+    pass

@@ -1,43 +1,31 @@
 from datetime import datetime
-from pydantic import BaseModel, UUID4
+from pydantic import BaseModel, UUID4, Field
 
 from app.schemas.task_enums import StatusTask
 
 
 class Task(BaseModel):
-    id: int
-    title: str
-    description: str
-    assigned_to: UUID4
-    status: StatusTask
-    completed: bool
-    due_date: datetime
-    create_at: datetime
-    update_at: datetime
+    id: int = Field(examples=[1])
+    title: str = Field(examples=["Learn FastAPI"])
+    description: str = Field(examples=["Learn FastAPI from scratch"])
+    assigned_to: UUID4 = Field(examples=["123e4567-e89b-12d3-a456-426614174000"])
+    status: StatusTask = Field(examples=["PENDING"])
+    completed: bool = Field(examples=[False])
+    due_date: datetime = Field(examples=["2023-04-20T15:39:59.133Z"])
+    create_at: datetime = Field(examples=["2023-04-20T15:39:59.133Z"])
+    update_at: datetime = Field(examples=["2023-04-20T15:39:59.133Z"])
 
     class Config:
-        orm_mode = True
-        schema_extra = {
-            "example": {
-                "id": 1,
-                "title": "Learn FastAPI",
-                "description": "Learn FastAPI from scratch",
-                "assigned_to" : "123e4567-e89b-12d3-a456-426614174000",
-                "completed": False,
-                "status": "pending",
-                "due_date": "2023-04-20"
-            }
-        }
+        from_attributes = True
 
 
 class TaskShow(BaseModel):
-    id: int
-    title: str
-    description: str
-    assigned_to: UUID4
-    status: StatusTask
-    due_date: datetime
+    id: int = Field(examples=[1])
+    title: str = Field(examples=["Learn FastAPI"])
+    description: str = Field(examples=["Learn FastAPI from scratch"])
+    assigned_to: UUID4 = Field(examples=["123e4567-e89b-12d3-a456-426614174000"])
+    status: StatusTask = Field(examples=["PENDING"])
+    due_date: datetime = Field(examples=["2023-04-20T15:39:59.133Z"])
 
     class config():
         from_attributes = True
-
