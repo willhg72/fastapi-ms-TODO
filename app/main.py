@@ -1,8 +1,16 @@
 from fastapi import FastAPI
 from app.routers import task_router
+from fastapi_sqlalchemy import DBSessionMiddleware, db
+from app.utilities.utility_data_task import DATABASE_URL
+
 
 # Instancing the app
 app = FastAPI()
+
+# middlewares
+# middlewares = [Middleware(CORSMiddleware)]
+
+app.add_middleware(DBSessionMiddleware, db_url=DATABASE_URL)
 
 # middlewares
 # middlewares = [Middleware(CORSMiddleware)]

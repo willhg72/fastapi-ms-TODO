@@ -1,28 +1,25 @@
-from typing import Any
-
-from fastapi import Depends
-from app.repositories.repository_dependencies import SessionLocal, get_db
+from app.repositories.repository_dependencies import *
 from app.repositories.task_i_repository import ITaskRepository
 from app.models.task_model import Task
-from sqlalchemy.orm import Session
 
 
 class TaskPostgreSQLRepository(ITaskRepository):
-    async def __init__(self):
+    def __init__(self, db: Session):
         super().__init__()
-        self.db: Session = SessionLocal()
+        self.db = db
 
-    async def get_all_tasks(self, page: int, offset: int, db: Session = Depends(get_db)) -> list[Task]:
+    def get_all_tasks(self, limit: int, offset: int) -> list[Task]:
+        tasks = self.db.query(Task).offset(offset).limit(limit).all()
+        return tasks
+
+    def task_by_id(self, task_id: int) -> Task:
         raise NotImplementedError
 
-    async def get_task_by_id(self, task_id: int, db: Session = Depends(get_db)) -> Task:
+    def create_task(self, task: Task) -> Task:
         raise NotImplementedError
 
-    async def create_task(self, task: Task, db: Session = Depends(get_db)) -> Task:
+    def update_task(self, task_id: int) -> None:
         raise NotImplementedError
 
-    async def update_task(self, task_id: int, db: Session = Depends(get_db)) -> None:
-        raise NotImplementedError
-
-    async def delete_task(self, task_id: int, db: Session = Depends(get_db)) -> None:
+    def delete_task(self, task_id: int) -> None:
         raise NotImplementedError

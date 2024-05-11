@@ -2,11 +2,11 @@ from enum import Enum
 
 
 class StatusTask(Enum):
-    pending = "pending"
-    completed = "completed"
-    in_progress = "in progress"
+    PENDING = "pending"
+    COMPLETED = "completed"
+    IN_PROGRESS = "in progress"
 
 class StatusColorTask(Enum):
-    pending = "pending"
-    completed = "completed"
-    in_progress = "in progress"
+    PENDING = "pending"
+    COMPLETED = "completed"
+    IN_PROGRESS = "in progress"
