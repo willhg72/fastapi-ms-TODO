@@ -19,7 +19,7 @@ app.add_middleware(DBSessionMiddleware, db_url=DATABASE_URL)
 # app initialization
 app_title = "Task API Project"
 app_version = "0.1.0"
-app_description = "Demo API where can see a Repository pattern implementation with Docker, RabbitMQ, GO microservices, frontend using FLet and login, authentication using supabase"
+app_description = "Demo API where can see a Repository pattern implementation with Docker, RabbitMQ, GO microservices, frontend using FLet and login, authentication using pocketbase"
 
 # Instancing  the routers
 app.include_router(task_router.router)
